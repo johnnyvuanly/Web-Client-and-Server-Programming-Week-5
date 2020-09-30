@@ -102,16 +102,7 @@ cats_and_owners.forEach(function(element){
 Source http://api.nobelprize.org/v1/prize.json?year=2017
 * */
 
-// TODO print the full name of the Literature Nobel laureate.
-// Get the array out first
-let prizesArray = nobel_prize_winners_2017.prizes
-let literatureObject = prizesArray[9]
-console.log(literatureObject)
-// TODO print the ids of each of the Physic.s Nobel laureates. Your code should still work without modification if a laureate was added, or removed.
-// TODO write code to print the names of all of the prize categories (So your output would start physics, chemistry, medicine... ).
-// TODO write code to print the total number of prize categories
-// TODO write code to count the total number of laureates from 2017. 
-//   have a good look at how the JSON is structured, and think about what loop(s) you'll need to write.
+
 
 
 let nobel_prize_winners_2017 = {
@@ -238,3 +229,48 @@ let nobel_prize_winners_2017 = {
     }
   ]
 };
+
+
+// Get the array out first
+let prizesArray = nobel_prize_winners_2017.prizes
+
+
+// TODO print the full name of the Literature Nobel laureate.
+let literatureObject = prizesArray[3]
+// console.log(literatureObject)
+let laureatesLiteratureArray = literatureObject.laureates
+// console.log(laureatesLiteratureArray)
+let litObject = laureatesLiteratureArray[0]
+// console.log(litObject)
+let litFirstName = litObject.firstname
+// console.log(litFirstName)
+let litSurname = litObject.surname
+// console.log(litSurname)
+console.log(`${litFirstName} ${litSurname}`)
+
+
+// TODO print the ids of each of the Physic.s Nobel laureates. Your code should still work without modification if a laureate was added, or removed.
+let physicsObject = prizesArray[0]
+// console.log(physicsObject)
+let physicsLaureatesArray = physicsObject.laureates
+// console.log(physicsLaureatesArray)
+physicsLaureatesArray.forEach(function(element) {
+  console.log(`This is one of the physicist ids ${element.id}`)
+})
+
+
+// TODO write code to print the names of all of the prize categories (So your output would start physics, chemistry, medicine... ).
+prizesArray.forEach(function(element) {
+  console.log(element.category)
+})
+
+
+// TODO write code to print the total number of prize categories
+prizesArray.forEach(function(element) {
+  let categoryCountArray = []
+  categoryCountArray.push(element.category)
+  console.log(categoryCountArray)
+  console.log(` The total number of prize categories is ${categoryCountArray.length}`)
+})
+// TODO write code to count the total number of laureates from 2017. 
+//   have a good look at how the JSON is structured, and think about what loop(s) you'll need to write.
